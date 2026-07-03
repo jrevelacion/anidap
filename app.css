@@ -1,0 +1,235 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Base colors */
+  --background: oklch(100% 0 0);
+  --foreground: oklch(25% 0.15 260);
+  --card-background: oklch(98% 0.01 260);
+
+  /* Text colors */
+  --text-primary: oklch(25% 0.15 260);
+  --text-secondary: oklch(60% 0.05 260);
+
+  /* UI elements */
+  --select-bg: oklch(95% 0.01 260);
+  --button-primary: oklch(65% 0.2 270);
+  --button-danger: oklch(50% 0.2 20);
+  --focus-ring: oklch(75% 0.3 330);
+
+  /* Special colors */
+  --moderate-blue: hsl(238, 72%, 63%);
+
+  /* Primary color palette */
+  --primary-50: #f5eaff;
+  --primary-100: #e6ccff;
+  --primary-200: #d1aaff;
+  --primary-300: #b67eff;
+  --primary-400: #a055f5;
+  --primary-500: #8e2bd7;
+  --primary-600: #7a1bb7;
+  --primary-700: #660f99;
+  --primary-800: #520c7a;
+  --primary-900: #3f065c;
+  --primary: oklch(65% 0.2 270);
+  --primary-foreground: oklch(98% 0.01 270);
+}
+
+.dark {
+  /* Base colors */
+  --background: black;
+  --foreground: #ffffff;
+  --card-background: #ffffff17;
+
+  /* Text colors */
+  --text-primary: #ffffff;
+  --text-secondary: #ffffffb3;
+
+  /* UI elements */
+  --select-bg: #27272A;
+  --button-primary: #4d148c;
+  --button-danger: #812435;
+  --focus-ring: #F182F6;
+
+  /* Special colors */
+  --moderate-blue: hsl(238, 72%, 63%);
+
+  /* Primary color palette */
+  --primary-50: #3B096C;
+  --primary-100: #520F83;
+  --primary-200: #7318A2;
+  --primary-300: #9823C2;
+  --primary-400: #c031e2;
+  --primary-500: #DD62ED;
+  --primary-600: #F182F6;
+  --primary-700: #FCADF9;
+  --primary-800: #FDD5F9;
+  --primary-900: #FEECFE;
+  --primary: #DD62ED;
+  --primary-foreground: #ffffff;
+}
+
+@theme {
+  --color-border: var(--select-bg);
+  --color-input: var(--select-bg);
+  --color-ring: var(--focus-ring);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-button-primary: var(--button-primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--text-secondary);
+  --color-secondary-foreground: var(--text-primary);
+  --color-accent: var(--moderate-blue);
+  --color-accent-foreground: var(--text-primary);
+  --color-muted: var(--select-bg);
+  --color-muted-foreground: var(--text-secondary);
+  --color-card-foreground: var(--text-primary);
+  --color-card-background: var(--card-background);
+}
+
+@layer base {
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: "Poppins", sans-serif;
+  }
+  button{
+    cursor: pointer;
+  }
+  input[type="number"]::-webkit-outer-spin-button,
+  input[type="number"]::-webkit-inner-spin-button {
+    appearance: none;
+    margin: 0;
+  }
+
+  input[type="number"] {
+    appearance: textfield;
+  }
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  z-index: 1999;
+  /* position: absolute; */
+  /* display: none; */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #27272a;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: black;
+}
+
+/* Custom Scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: #1e1e24;
+    border-radius: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #2a2a32;
+    border-radius: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #3a3a42;
+}
+
+
+/* Nprogress bar color */
+/* Make clicks pass-through */
+#nprogress {
+  pointer-events: none;
+}
+
+#nprogress .bar {
+  background: #CA1313;
+
+  position: fixed;
+  z-index: 1031;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 3px;
+}
+
+/* Fancy blur effect */
+#nprogress .peg {
+  display: block;
+  position: absolute;
+  right: 0px;
+  width: 100px;
+  height: 100%;
+  box-shadow: 0 0 10px #CA1313, 0 0 5px #CA1313;
+  opacity: 1.0;
+
+  -webkit-transform: rotate(3deg) translate(0px, -4px);
+      -ms-transform: rotate(3deg) translate(0px, -4px);
+          transform: rotate(3deg) translate(0px, -4px);
+}
+
+/* Remove these to get rid of the spinner */
+#nprogress .spinner {
+  display: block;
+  position: fixed;
+  z-index: 1031;
+  top: 15px;
+  right: 15px;
+}
+
+#nprogress .spinner-icon {
+  width: 18px;
+  height: 18px;
+  box-sizing: border-box;
+
+  border: solid 2px transparent;
+  border-top-color: #CA1313;
+  border-left-color: #CA1313;
+  border-radius: 50%;
+
+  -webkit-animation: nprogress-spinner 400ms linear infinite;
+          animation: nprogress-spinner 400ms linear infinite;
+}
+
+.nprogress-custom-parent {
+  overflow: hidden;
+  position: relative;
+}
+
+.nprogress-custom-parent #nprogress .spinner,
+.nprogress-custom-parent #nprogress .bar {
+  position: absolute;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@-webkit-keyframes nprogress-spinner {
+  0%   { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+@keyframes nprogress-spinner {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

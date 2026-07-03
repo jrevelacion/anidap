@@ -1,0 +1,1 @@
+function o(e,i,s){const n=s?`comment=${s}`:"";if(e.startsWith("playlist-"))return`/playlist/${e.replace("playlist-","")}${n?`?${n}`:""}`;if(e.endsWith("-info"))return`/info/${e.replace("-info","")}${n?`?${n}`:""}`;const t=new URLSearchParams;return t.set("id",e),t.set("ep",i),s&&t.set("comment",s),`/watch?${t.toString()}`}export{o as g};
